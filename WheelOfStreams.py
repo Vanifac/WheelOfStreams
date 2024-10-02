@@ -8,19 +8,32 @@ import argparse
 
 
 testing = True
-args = None
 
-if testing:
-    print("Testing")
-    args = "-add vanifac".split(" ")
 
-parser = argparse.ArgumentParser(description="Configures WheelOfNames")
+def build_args():
+    test_args = None
+    if testing:
+        print("Testing")
+        test_args = "-key 1342 -wheel Wheel -add vanifac".split(" ")
 
-action_group = parser.add_mutually_exclusive_group()
-action_group.add_argument('-add', nargs=1)
-action_group.add_argument('-clear')
+    parser = argparse.ArgumentParser(description="Configures WheelOfNames")
 
-args = parser.parse_args(args)
+    parser.add_argument('-wheel', nargs=1, required=True)
+    parser.add_argument('-key', nargs=1, required=True)
 
-if args.add:
-    print("adding entry to", args.add[0])
+    action_group = parser.add_mutually_exclusive_group()
+    action_group.add_argument('-add', nargs=1)
+    action_group.add_argument('-clear')
+
+    return parser.parse_args(test_args)
+
+
+def run():
+    args = build_args()
+    if args.add:
+        print("adding entry to", args.add[0])
+    elif args.clear:
+        print("clearing wheel")
+
+
+run()
