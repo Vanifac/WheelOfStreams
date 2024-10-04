@@ -25,7 +25,11 @@ Adds an entry with NAME to the wheel. If an entry of that name already exists, a
 #### -clear
 Sets all entries on the wheel to be disabled with a weight of 0.
 
-#### -color VALUE
+#### -color NAME VALUE
+NAME is the name of the entry you wish to set.
+
+COLOR is the color you wish to set on the entry.
+##### Color Values
 Specify the color of the wheel. Acceptable values are either a color hex (eg. #a4c5b9) or a preset listed below.
 
 - White - #FFFFFF
