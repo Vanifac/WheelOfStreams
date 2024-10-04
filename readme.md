@@ -8,8 +8,9 @@ How to setup
 2. 
 
 ## Arguments
-The following arguments MUST used with the Wheel of Streams:
+`-key KEY -wheel NAMEOFWHEEL (-add NAME | -color NAME COLOR | -clear)`
 
+The following arguments MUST used with the Wheel of Streams:
 ### -key API_KEY
 Your WheelOfNames API Key.
 
