@@ -3,28 +3,29 @@
 Wheel of Streams is a program created to assist with automating www.wheelofnames.com
 
 ## Setup
+How to setup
+1. 
+2. 
 
 ## Arguments
 The following arguments MUST used with the Wheel of Streams:
 
 ### -key API_KEY
-
 Your WheelOfNames API Key.
 
 ### -wheel NAME
 The name of the wheel you wish to edit.
 
-## Arguments
-The following arguments can be used with the Wheel of Streams:
+### Option Arguments
+One of the following arguments must be included:
 
-
-### -add NAME
+#### -add NAME
 Adds an entry with NAME to the wheel. If an entry of that name already exists, adds +1 weight to that entry.
 
-### -clear
+#### -clear
 Sets all entries on the wheel to be disabled with a weight of 0.
 
-### -color VALUE
+#### -color VALUE
 Specify the color of the wheel. Acceptable values are either a color hex (eg. #a4c5b9) or a preset listed below.
 
 - White - #FFFFFF
@@ -43,5 +44,11 @@ Specify the color of the wheel. Acceptable values are either a color hex (eg. #a
 - Navy - #000080
 - Fuchsia - #FF00FF
 - Purple - #800080
+
+### Examples
+`-key put-key-here -wheel Wheel -add Vanifac`
+`-key put-key-here -wheel wheeloffortune -color lemonguy yellow`
+`-key put-key-here -wheel RiggedRaffleWheel -color brian #1f6a78`
+`-key put-key-here -wheel Wheel2 -clear`
 
 Make sure to check the `WheelColors.py` file for the most up-to-date list of colors.
