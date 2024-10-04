@@ -7,24 +7,24 @@ Wheel of Streams is a program created to assist with automating www.wheelofnames
 ## Arguments
 The following arguments MUST used with the Wheel of Streams:
 
-### `-key API_KEY`
+### -key API_KEY
 
 Your WheelOfNames API Key.
 
-### `-wheel NAME`
+### -wheel NAME
 The name of the wheel you wish to edit.
 
 ## Arguments
 The following arguments can be used with the Wheel of Streams:
 
 
-### `-add NAME`
-Adds an entry with NAME to the wheel. If an entry of that name is already found, adds +1 weight to that entry.
+### -add NAME
+Adds an entry with NAME to the wheel. If an entry of that name already exists, adds +1 weight to that entry.
 
-### `-clear`
+### -clear
 Sets all entries on the wheel to be disabled with a weight of 0.
 
-### `-color VALUE`
+### -color VALUE
 Specify the color of the wheel. Acceptable values are either a color hex (eg. #a4c5b9) or a preset listed below.
 
 - White - #FFFFFF
