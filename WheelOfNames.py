@@ -29,6 +29,9 @@ def send_wheel(api_key: str, wheel: dict):
     conn.request("PUT", "/api/v1/wheels/private", payload, headers)
 
     res = conn.getresponse()
-    data = res.read()
+    data = res.read().decode("utf-8")
 
-    print(data.decode("utf-8"))
+    if data[0] == "{":
+        return "Successful Upload!"
+    else:
+        return data

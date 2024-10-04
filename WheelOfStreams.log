@@ -150,3 +150,251 @@ INFO:root:Starting
 INFO:root:['C:\\My Stuff\\GitHub Repos\\WheelOfStreams\\dist\\WheelOfStreams.exe', '-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-add', 'bungsterflungster']
 INFO:root:Found wheel: Wheel
 INFO:root:Adding entry to bungsterflungster
+INFO:root:Starting
+INFO:root:[]
+INFO:root:Starting
+INFO:root:[]
+INFO:root:Starting
+INFO:root:[]
+INFO:root:Starting
+INFO:root:[]
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-add', 'Vanifac']
+INFO:root:Found wheel: Wheel
+INFO:root:Adding entry to Vanifac
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a87d32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a87d32
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a87d32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a87d32
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Invalid Color String
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Invalid Color String
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Invalid Color String
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8zd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8zd32
+INFO:root:Invalid Color String
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:{"data":{"path":"wvs-jmk"}}
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:{"data":{"path":"wvs-jmk"}}
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:{"data":{"path":"wvs-jmk"}}
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:{"data":{"path":"wvs-jmk"}}
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a8fd32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#f8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #f8fd32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#f8fd32']
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #f8fd32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#fzfd32']
+INFO:root:Invalid Color String
+INFO:root:Invalid color
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #fzfd32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#fzfd32']
+INFO:root:Invalid Color String
+INFO:root:Invalid color
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#fzfd32']
+INFO:root:Invalid Color String
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#fzfd32']
+INFO:root:Invalid Color String
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#f0fd32']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #f0fd32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#000000']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #000000
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#ffffff']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #ffffff
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#ffffff']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to False
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#ffffff']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to False
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#zfffff']
+INFO:root:Invalid Color String
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a87d32']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a87d32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#z87d32']
+INFO:root:Invalid Color String
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', '#a87d32']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #a87d32
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'Yellow']
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'Yellow']
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'Yellow']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #FFFF00
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'Yellow']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #FFFF00
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Invalid Color String
+INFO:root:Exiting
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #FFFF00
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel2', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+ERROR:root:Wheel by that name not found
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e9d6b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+INFO:root:Starting Test
+INFO:root:['-key', 'baf23025-e9d6b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+INFO:root:---Starting Test---
+INFO:root:['-key', 'baf23025-e9d6b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+INFO:root:---Starting Test---
+INFO:root:['-key', 'baf23025-e9d6b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+ERROR:root:Invalid API key
+ERROR:root:Exiting
+INFO:root:---Starting Test---
+INFO:root:['-key', 'baf23025-e9d6b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+ERROR:root:Invalid API key
+ERROR:root:---Exiting---
+INFO:root:---Starting Test---
+INFO:root:['-key', 'baf23025-e96b-4feb-a3d5-ca807746adfb', '-wheel', 'Wheel', '-color', 'Vanifac', 'yellow']
+INFO:root:Downloading Wheel
+INFO:root:Found wheel: Wheel
+INFO:root:Setting Color for Vanifac to #FFFF00
+INFO:root:Uploading Wheel
+INFO:root:Successful Upload!
+INFO:root:---Closing---
