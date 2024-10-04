@@ -3,6 +3,8 @@ import WheelOfNames
 import logging
 import sys
 import WheelColors
+import WheelSecrets
+
 
 # https://docs.python.org/3/library/argparse.html#the-add-argument-method
 # https://docs.streamer.bot/api/sub-actions/core/system/run-a-program
@@ -17,9 +19,9 @@ logging.basicConfig(filename='WheelOfStreams.log', encoding='utf-8', level=loggi
 def build_args():
     test_args = None
     if testing:
-        # test_args = "-key baf23025-e96b-4feb-a3d5-ca807746adfb -wheel Wheel -add Vanifac".split(" ")
-        test_args = "-key baf23025-e96b-4feb-a3d5-ca807746adfb -wheel Wheel -color Vanifac yellow".split(" ")
-        # test_args = "-key baf23025-e96b-4feb-a3d5-ca807746adfb -wheel Wheel -clear".split(" ")
+        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -add Vanifac".split(" ")
+        test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
+        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
         logging.info("---Starting Test---")
         logging.info(test_args)
     else:
