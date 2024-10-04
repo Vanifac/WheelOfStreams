@@ -49,10 +49,12 @@ Specify the color of the wheel. Acceptable values are either a color hex (eg. #a
 - Fuchsia - #FF00FF
 - Purple - #800080
 
+Make sure to check the `WheelColors.py` file for the most up-to-date list of colors.
 ### Examples
 `-key put-key-here -wheel Wheel -add Vanifac`
-`-key put-key-here -wheel wheeloffortune -color lemonguy yellow`
-`-key put-key-here -wheel RiggedRaffleWheel -color brian #1f6a78`
-`-key put-key-here -wheel Wheel2 -clear`
 
-Make sure to check the `WheelColors.py` file for the most up-to-date list of colors.
+`-key put-key-here -wheel wheeloffortune -color lemonguy yellow`
+
+`-key put-key-here -wheel RiggedRaffleWheel -color brian #1f6a78`
+
+`-key put-key-here -wheel Wheel2 -clear`
