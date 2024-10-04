@@ -3,7 +3,6 @@ import WheelOfNames
 import logging
 import sys
 import WheelColors
-import WheelSecrets
 
 
 # https://docs.python.org/3/library/argparse.html#the-add-argument-method
@@ -19,10 +18,15 @@ logging.basicConfig(filename='WheelOfStreams.log', encoding='utf-8', level=loggi
 def build_args():
     test_args = None
     if testing:
+        logging.info("---Starting Test---")
+
+        import WheelSecrets
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -add Vanifac".split(" ")
         test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
-        logging.info("---Starting Test---")
+
+        if test_args is None:
+            logging.error("Test Args not set")
         logging.info(test_args)
     else:
         logging.info("---Starting---")
@@ -37,6 +41,7 @@ def build_args():
     action_group.add_argument('-add', nargs=1)
     action_group.add_argument('-color', nargs=2)
     action_group.add_argument('-clear', action='store_true')
+
     return parser.parse_args(test_args)
 
 
@@ -71,16 +76,17 @@ def add_entry(wheel: dict, name: str):
 
 def set_entry_color(wheel: dict, name: str, color: str) -> bool:
     logging.info(f"Setting Color for {name} to {color}")
-    # TODO Validate Color HEX / Set up color presets
     i = 0
-    entry_found = False
     for entry in wheel['config']['entries']:
         if entry['text'] == name:
+            if wheel['config']['entries'][i]['color'] == color:
+                logging.info("Color already set")
+                return False
             wheel['config']['entries'][i]['color'] = color
-            entry_found = True
-            break
+            return True
         i += 1
-    return entry_found
+
+    return False
 
 
 def validate_color(color: str):
@@ -121,6 +127,7 @@ def run():
     wheel_data = WheelOfNames.get_wheels(args.key[0])
     if 'error' in wheel_data.keys():
         logging.error('Invalid API key')
+        logging.error(wheel_data['error'])
         logging.error('---Exiting---')
         return
 
@@ -137,6 +144,7 @@ def run():
     elif args.color:
         if set_entry_color(wheel, args.color[0], args.color[1]):
             upload = True
+
     elif args.clear:
         clear_entrys(wheel)
         upload = True
@@ -144,7 +152,7 @@ def run():
     if upload:
         logging.info("Uploading Wheel")
         logging.info(WheelOfNames.send_wheel(args.key[0], wheel))
-        logging.info("---Closing---")
+    logging.info("---Closing---")
 
 
 run()

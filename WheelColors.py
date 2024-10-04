@@ -15,7 +15,7 @@ color_dict = {
     "Blue": "#0000FF",
     "Navy": "#000080",
     "Fuchsia": "#FF00FF",
-    "Purple": "#800080}"}
+    "Purple": "#800080"}
 
 
 def get_color(color: str):
