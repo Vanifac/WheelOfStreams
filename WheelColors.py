@@ -23,6 +23,7 @@ def get_color(color: str):
         return color_dict[color.title()]
     return None
 
+
 def validate_color(color: str):
     new_color = None
     # Check Color HEX
