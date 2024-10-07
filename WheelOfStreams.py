@@ -21,8 +21,8 @@ def build_args():
         logging.info("---Starting Test---")
 
         import WheelSecrets
-        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -add Vanifac".split(" ")
-        test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
+        test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -add Vanifac".split(" ")
+        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
 
         if test_args is None:
