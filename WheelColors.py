@@ -22,3 +22,16 @@ def get_color(color: str):
     if color.title() in color_dict:
         return color_dict[color.title()]
     return None
+
+def validate_color(color: str):
+    new_color = None
+    # Check Color HEX
+    if color[0] == "#" and len(color) == 7:
+        try:
+            int(color[1:], 16)
+            new_color = color
+        except ValueError:
+            pass
+    else:
+        new_color = get_color(color)
+    return new_color

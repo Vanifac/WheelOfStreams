@@ -89,22 +89,6 @@ def set_entry_color(wheel: dict, name: str, color: str) -> bool:
     return False
 
 
-def validate_color(color: str):
-    new_color = None
-    # Check Color HEX
-    if color[0] == "#" and len(color) == 7:
-        try:
-            int(color[1:], 16)
-            new_color = color
-        except ValueError:
-            pass
-    else:
-        new_color = WheelColors.get_color(color)
-    if new_color is None:
-        logging.info("Invalid Color String")
-    return new_color
-
-
 def clear_entrys(wheel: dict):
     for entry in wheel['config']['entries']:
         entry['weight'] = 0
@@ -116,8 +100,9 @@ def run():
 
     # Validate Color before doing anything
     if args.color:
-        if (new_color := validate_color(args.color[1])) is None:
-            logging.info("Exiting")
+        if (new_color := WheelColors.validate_color(args.color[1])) is None:
+            logging.info("Invalid Color String")
+            logging.info('---Exiting---')
             return
         else:
             # Set color argument to the validated color hex
