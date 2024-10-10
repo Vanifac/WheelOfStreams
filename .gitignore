@@ -22,3 +22,5 @@ Thumbs.db
 
 # Ignore Secrets
 WheelSecrets.py
+
+*.pyc
