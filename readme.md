@@ -1,6 +1,6 @@
 # Wheel of Streams
 
-Wheel of Streams is a program created to assist with automating www.wheelofnames.com
+Wheel of Streams is a program created to assist with automating www.wheelofnames.com wheels.
 
 ## Setup
 How to setup
@@ -52,10 +52,10 @@ Specify the color of the wheel. Acceptable values are either a color hex (eg. #a
 
 Make sure to check the `WheelColors.py` file for the most up-to-date list of colors.
 ### Examples
-`-key put-key-here -wheel Wheel -add Vanifac`
+`-key put-apikey-here -wheel Wheel -add Vanifac`
 
-`-key put-key-here -wheel wheeloffortune -color lemonguy yellow`
+`-key put-apikey-here -wheel wheeloffortune -color lemonguy yellow`
 
-`-key put-key-here -wheel RiggedRaffleWheel -color brian #1f6a78`
+`-key put-apikey-here -wheel RiggedRaffleWheel -color brian #1f6a78`
 
-`-key put-key-here -wheel Wheel2 -clear`
+`-key put-apikey-here -wheel Wheel2 -clear`

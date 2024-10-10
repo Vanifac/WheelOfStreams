@@ -3,13 +3,14 @@ import WheelOfNames
 import logging
 import sys
 import WheelColors
+# import json
 
 
 # https://docs.python.org/3/library/argparse.html#the-add-argument-method
 # https://docs.streamer.bot/api/sub-actions/core/system/run-a-program
 
 
-testing = True
+testing = False
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='WheelOfStreams.log', encoding='utf-8', level=logging.INFO)
@@ -19,9 +20,9 @@ def build_args():
     test_args = None
     if testing:
         logging.info("---Starting Test---")
-
-        import WheelSecrets
-        test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -add Vanifac".split(" ")
+        test_args = None
+        # import WheelSecrets
+        # test_args = f"-key {WheelSecrets.api_key} -wheel NewNewWheel -add Vanifac".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
 
@@ -49,7 +50,8 @@ def get_wheel_by_name(data: list, wheel_name: str):
     for wheel in data:
         if wheel['config']['title'] == wheel_name:
             logging.info(f"Found wheel: {wheel_name}")
-            return wheel
+            # print(json.dumps(wheel, indent=4))
+            return wheel['config']
     return None
 
 
@@ -57,32 +59,34 @@ def add_entry(wheel: dict, name: str):
     logging.info(f"Adding entry to {name}")
     i = 0
     entry_found = False
-    for entry in wheel['config']['entries']:
+    for entry in wheel['entries']:
         if entry['text'] == name:
-            wheel['config']['entries'][i]['weight'] += 1
-            wheel['config']['entries'][i]['enabled'] = True
+            print(entry)
+            wheel['entries'][i]['weight'] += 1
+            wheel['entries'][i]['enabled'] = True
             entry_found = True
+            print(entry)
             break
         i += 1
     if not entry_found:
-        logging.info("{name} not found, creating.")
+        logging.info(f"{name} not found, creating.")
         new_entry = {
-            "text": name,
             "weight": 1,
+            "text": name,
             "enabled": True}
-        wheel['config']['entries'].append(new_entry)
+        wheel['entries'].append(new_entry)
     return
 
 
 def set_entry_color(wheel: dict, name: str, color: str) -> bool:
     logging.info(f"Setting Color for {name} to {color}")
     i = 0
-    for entry in wheel['config']['entries']:
+    for entry in wheel['entries']:
         if entry['text'] == name:
-            if wheel['config']['entries'][i]['color'] == color:
+            if wheel['entries'][i]['color'] == color:
                 logging.info("Color already set")
                 return False
-            wheel['config']['entries'][i]['color'] = color
+            wheel['entries'][i]['color'] = color
             return True
         i += 1
 
@@ -90,7 +94,7 @@ def set_entry_color(wheel: dict, name: str, color: str) -> bool:
 
 
 def clear_entrys(wheel: dict):
-    for entry in wheel['config']['entries']:
+    for entry in wheel['entries']:
         entry['weight'] = 0
         entry['enabled'] = False
 
@@ -129,14 +133,13 @@ def run():
     elif args.color:
         if set_entry_color(wheel, args.color[0], args.color[1]):
             upload = True
-
     elif args.clear:
         clear_entrys(wheel)
         upload = True
 
     if upload:
         logging.info("Uploading Wheel")
-        logging.info(WheelOfNames.send_wheel(args.key[0], wheel))
+        logging.info(WheelOfNames.send_wheel(args.key[0], {'config': wheel}))
     logging.info("---Closing---")
 
 

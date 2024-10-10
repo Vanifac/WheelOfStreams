@@ -21,17 +21,17 @@ def get_wheels(api_key: str):
 
 def send_wheel(api_key: str, wheel: dict):
     payload = json.dumps(wheel)
+    print(json.dumps(wheel, indent=4))
     headers = {
         'x-api-key': api_key,
         'Content-Type': "application/json",
         'Accept': "application/json, application/xml"}
-
     conn.request("PUT", "/api/v1/wheels/private", payload, headers)
 
     res = conn.getresponse()
-    data = res.read().decode("utf-8")
+    data: dict = json.loads(res.read().decode("utf-8"))
 
-    if data[0] == "{":
-        return "Successful Upload!"
+    if 'error' in data.keys():
+        return data['error']
     else:
-        return data
+        return "Successful Upload!"
