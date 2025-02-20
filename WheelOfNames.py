@@ -6,7 +6,21 @@ import json
 conn = http.client.HTTPSConnection("wheelofnames.com")
 
 
-def get_wheels(api_key: str):
+def get_shared_wheels(api_key: str):
+    headers = {
+        "x-api-key": api_key,
+        "Accept": "application/json"
+    }
+
+    conn.request("GET", "/api/v1/wheels/shared", headers=headers)
+
+    res = conn.getresponse()
+    data = json.loads(res.read().decode("utf-8"))
+
+    return data
+
+
+def get_private_wheels(api_key: str):
     headers = {
         'x-api-key': api_key,
         'Accept': "application/json"}
@@ -19,9 +33,25 @@ def get_wheels(api_key: str):
     return data
 
 
-def send_wheel(api_key: str, wheel: dict):
+def send_shared_wheel(api_key: str, path: str, wheel: dict):
     payload = json.dumps(wheel)
-    print(json.dumps(wheel, indent=4))
+    headers = {
+        "x-api-key": api_key,
+        "Content-Type": "application/json",
+        "Accept": "application/json"}
+    conn.request("PUT", f"/api/v1/wheels/{path}", payload, headers)
+
+    res = conn.getresponse()
+    data: dict = json.loads(res.read().decode("utf-8"))
+
+    if 'error' in data.keys():
+        return data['error']
+    else:
+        return "Successful Upload!"
+
+
+def send_private_wheel(api_key: str, wheel: dict):
+    payload = json.dumps(wheel)
     headers = {
         'x-api-key': api_key,
         'Content-Type': "application/json",

@@ -17,6 +17,13 @@ Your WheelOfNames API Key.
 ### -wheel NAME
 The name of the wheel you wish to edit.
 
+
+### Wheel Type Arguments
+One of the following arguments must be included:
+#### -shared 
+#### -private 
+
+
 ### Option Arguments
 One of the following arguments must be included:
 

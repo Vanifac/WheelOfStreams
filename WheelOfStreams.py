@@ -10,7 +10,7 @@ import WheelColors
 # https://docs.streamer.bot/api/sub-actions/core/system/run-a-program
 
 
-testing = False
+testing = True
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='WheelOfStreams.log', encoding='utf-8', level=logging.INFO)
@@ -20,8 +20,8 @@ def build_args():
     test_args = None
     if testing:
         logging.info("---Starting Test---")
-        test_args = None
-        # import WheelSecrets
+        import WheelSecrets
+        test_args = f"-shared -key {WheelSecrets.api_key} -wheel 72b-dtp -add Vanifac".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel NewNewWheel -add Vanifac".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
         # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
@@ -35,10 +35,14 @@ def build_args():
 
     parser = argparse.ArgumentParser(description="Configures WheelOfNames")
 
-    parser.add_argument('-wheel', nargs=1, required=True)
     parser.add_argument('-key', nargs=1, required=True)
+    parser.add_argument('-wheel', nargs=1, required=True)
 
-    action_group = parser.add_mutually_exclusive_group()
+    wheel_type_group = parser.add_mutually_exclusive_group(required=True)
+    wheel_type_group.add_argument('-shared', action='store_true')
+    wheel_type_group.add_argument('-private', action='store_true')
+
+    action_group = parser.add_mutually_exclusive_group(required=True)
     action_group.add_argument('-add', nargs=1)
     action_group.add_argument('-color', nargs=2)
     action_group.add_argument('-clear', action='store_true')
@@ -46,12 +50,12 @@ def build_args():
     return parser.parse_args(test_args)
 
 
-def get_wheel_by_name(data: list, wheel_name: str):
+def get_wheel_by_name_or_path(data: list, identifier: str):
     for wheel in data:
-        if wheel['config']['title'] == wheel_name:
-            logging.info(f"Found wheel: {wheel_name}")
-            # print(json.dumps(wheel, indent=4))
+        if wheel['config']['title'] == identifier or wheel['path'] == identifier:
+            logging.info(f"Found wheel: {identifier}")
             return wheel['config']
+
     return None
 
 
@@ -93,7 +97,7 @@ def set_entry_color(wheel: dict, name: str, color: str) -> bool:
     return False
 
 
-def clear_entrys(wheel: dict):
+def clear_entries(wheel: dict):
     for entry in wheel['entries']:
         entry['weight'] = 0
         entry['enabled'] = False
@@ -101,7 +105,16 @@ def clear_entrys(wheel: dict):
 
 def run():
     args = build_args()
+    if args.private:
+        run_private(args)
+    elif args.shared:
+        run_shared(args)
+    else:
+        logging.error("Neither private nor shared option is set")
+        logging.error('---Exiting---')
 
+
+def run_private(args):
     # Validate Color before doing anything
     if args.color:
         if (new_color := WheelColors.validate_color(args.color[1])) is None:
@@ -113,14 +126,14 @@ def run():
             args.color[1] = new_color
 
     logging.info("Downloading Wheel")
-    wheel_data = WheelOfNames.get_wheels(args.key[0])
+    wheel_data = WheelOfNames.get_private_wheels(args.key[0])
     if 'error' in wheel_data.keys():
         logging.error('Invalid API key')
         logging.error(wheel_data['error'])
         logging.error('---Exiting---')
         return
 
-    wheel = get_wheel_by_name(wheel_data['data']['wheels'], args.wheel[0])
+    wheel = get_wheel_by_name_or_path(wheel_data['data']['wheels'], args.wheel[0])
     if wheel is None:
         logging.error('Wheel by that name not found')
         logging.error('---Exiting---')
@@ -134,12 +147,55 @@ def run():
         if set_entry_color(wheel, args.color[0], args.color[1]):
             upload = True
     elif args.clear:
-        clear_entrys(wheel)
+        clear_entries(wheel)
         upload = True
 
     if upload:
         logging.info("Uploading Wheel")
-        logging.info(WheelOfNames.send_wheel(args.key[0], {'config': wheel}))
+        logging.info(WheelOfNames.send_private_wheel(args.key[0], {'config': wheel}))
+    logging.info("---Closing---")
+
+
+def run_shared(args):
+    # Validate Color before doing anything
+    if args.color:
+        if (new_color := WheelColors.validate_color(args.color[1])) is None:
+            logging.info("Invalid Color String")
+            logging.info('---Exiting---')
+            return
+        else:
+            # Set color argument to the validated color hex
+            args.color[1] = new_color
+
+    logging.info("Downloading Wheel")
+    wheel_data = WheelOfNames.get_shared_wheels(args.key[0])
+
+    if 'error' in wheel_data.keys():
+        logging.error('Invalid API key')
+        logging.error(wheel_data['error'])
+        logging.error('---Exiting---')
+        return
+
+    wheel = get_wheel_by_name_or_path(wheel_data['data']['wheels'], args.wheel[0])
+    if wheel is None:
+        logging.error('Wheel by that name not found')
+        logging.error('---Exiting---')
+        return
+
+    upload = False
+    if args.add:
+        add_entry(wheel, args.add[0])
+        upload = True
+    elif args.color:
+        if set_entry_color(wheel, args.color[0], args.color[1]):
+            upload = True
+    elif args.clear:
+        clear_entries(wheel)
+        upload = True
+
+    if upload:
+        logging.info("Uploading Wheel")
+        logging.info(WheelOfNames.send_shared_wheel(args.key[0], args.wheel[0], {'wheelConfig': wheel}))
     logging.info("---Closing---")
 
 
