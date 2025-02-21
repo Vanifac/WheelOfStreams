@@ -4,7 +4,7 @@ import logging
 import WheelColors
 
 
-# https://docs.python.org/3/library/argparse.html#the-add-argument-method
+# https://docs.python.org/3/library/argparse.html
 # https://docs.streamer.bot/api/sub-actions/core/system/run-a-program
 
 
@@ -57,11 +57,11 @@ def add_entry(wheel: dict, name: str):
     entry_found = False
     for entry in wheel['entries']:
         if entry['text'] == name:
-            #print(entry)
+            # print(entry)
             wheel['entries'][i]['weight'] += 1
             wheel['entries'][i]['enabled'] = True
             entry_found = True
-            #print(entry)
+            # print(entry)
             print(wheel['entries'][i]['weight'])
             break
         i += 1
@@ -98,10 +98,14 @@ def clear_entries(wheel: dict):
 
 
 def run():
-    logging.info("---Running---")
     args = build_args()
     if args.test:
-        logging.info("---Test---")
+        logging.info("---Test Run---")
+    else:
+        logging.info("---Running---")
+    args_to_log = vars(args).copy()
+    args_to_log['key'] = 'REDACTED'
+    logging.info(args_to_log)
 
     if args.private or args.shared:
         run_wheel(args)
@@ -158,10 +162,13 @@ def run_wheel(args):
     if upload:
         logging.info("Uploading Wheel")
         if args.shared:
-            logging.info(WheelOfNames.send_shared_wheel(args.key[0], args.wheel[0], {'wheelConfig': wheel}))
+            logging.info(WheelOfNames.send_shared_wheel(
+                args.key[0], args.wheel[0], {'wheelConfig': wheel}
+            ))
         elif args.private:
-            logging.info(WheelOfNames.send_private_wheel(args.key[0], {'config': wheel}))
-    logging.info("---Closing---")
+            logging.info(WheelOfNames.send_private_wheel(
+                args.key[0], {'config': wheel}
+            ))
 
 
 run()
