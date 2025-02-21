@@ -1,40 +1,30 @@
 import argparse
 import WheelOfNames
 import logging
-import sys
 import WheelColors
-# import json
 
 
 # https://docs.python.org/3/library/argparse.html#the-add-argument-method
 # https://docs.streamer.bot/api/sub-actions/core/system/run-a-program
 
 
-testing = True
-
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='WheelOfStreams.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig(
+    filename='WheelOfStreams.log',
+    encoding='utf-8',
+    level=logging.INFO,
+    force=True,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 
 def build_args():
-    test_args = None
-    if testing:
-        logging.info("---Starting Test---")
-        import WheelSecrets
-        test_args = f"-shared -key {WheelSecrets.api_key} -wheel 72b-dtp -add Vanifac".split(" ")
-        # test_args = f"-key {WheelSecrets.api_key} -wheel NewNewWheel -add Vanifac".split(" ")
-        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -color Vanifac yellow".split(" ")
-        # test_args = f"-key {WheelSecrets.api_key} -wheel Wheel -clear".split(" ")
-
-        if test_args is None:
-            logging.error("Test Args not set")
-        logging.info(test_args)
-    else:
-        logging.info("---Starting---")
-        logging.info(sys.argv[1:])
+    logging.info("---Parsing Arguments---")
 
     parser = argparse.ArgumentParser(description="Configures WheelOfNames")
 
+    parser.add_argument('-test', action='store_true')
     parser.add_argument('-key', nargs=1, required=True)
     parser.add_argument('-wheel', nargs=1, required=True)
 
@@ -47,13 +37,15 @@ def build_args():
     action_group.add_argument('-color', nargs=2)
     action_group.add_argument('-clear', action='store_true')
 
-    return parser.parse_args(test_args)
+    return parser.parse_args()
 
 
 def get_wheel_by_name_or_path(data: list, identifier: str):
+    logging.info(f"Looking for wheel: {identifier}")
     for wheel in data:
-        if wheel['config']['title'] == identifier or wheel['path'] == identifier:
-            logging.info(f"Found wheel: {identifier}")
+        logging.info(f"Checking wheel: {wheel['config']['title']} - {wheel['path']}")
+        if wheel['path'] == identifier or wheel['config']['title'] == identifier:
+            logging.info(f"Wheel Match: {identifier}")
             return wheel['config']
 
     return None
@@ -65,11 +57,12 @@ def add_entry(wheel: dict, name: str):
     entry_found = False
     for entry in wheel['entries']:
         if entry['text'] == name:
-            print(entry)
+            #print(entry)
             wheel['entries'][i]['weight'] += 1
             wheel['entries'][i]['enabled'] = True
             entry_found = True
-            print(entry)
+            #print(entry)
+            print(wheel['entries'][i]['weight'])
             break
         i += 1
     if not entry_found:
@@ -78,6 +71,7 @@ def add_entry(wheel: dict, name: str):
             "weight": 1,
             "text": name,
             "enabled": True}
+        print(1)
         wheel['entries'].append(new_entry)
     return
 
@@ -104,17 +98,20 @@ def clear_entries(wheel: dict):
 
 
 def run():
+    logging.info("---Running---")
     args = build_args()
-    if args.private:
-        run_private(args)
-    elif args.shared:
-        run_shared(args)
-    else:
+    if args.test:
+        logging.info("---Test---")
+
+    if args.private or args.shared:
+        run_wheel(args)
+    else:  # This should never happen
         logging.error("Neither private nor shared option is set")
         logging.error('---Exiting---')
+    logging.shutdown()
 
 
-def run_private(args):
+def run_wheel(args):
     # Validate Color before doing anything
     if args.color:
         if (new_color := WheelColors.validate_color(args.color[1])) is None:
@@ -126,49 +123,14 @@ def run_private(args):
             args.color[1] = new_color
 
     logging.info("Downloading Wheel")
-    wheel_data = WheelOfNames.get_private_wheels(args.key[0])
-    if 'error' in wheel_data.keys():
-        logging.error('Invalid API key')
-        logging.error(wheel_data['error'])
+    if args.private:
+        wheel_data = WheelOfNames.get_private_wheels(args.key[0])
+    elif args.shared:
+        wheel_data = WheelOfNames.get_shared_wheels(args.key[0])
+    else:  # This should never happen
+        logging.error("Neither private nor shared option is set")
         logging.error('---Exiting---')
         return
-
-    wheel = get_wheel_by_name_or_path(wheel_data['data']['wheels'], args.wheel[0])
-    if wheel is None:
-        logging.error('Wheel by that name not found')
-        logging.error('---Exiting---')
-        return
-
-    upload = False
-    if args.add:
-        add_entry(wheel, args.add[0])
-        upload = True
-    elif args.color:
-        if set_entry_color(wheel, args.color[0], args.color[1]):
-            upload = True
-    elif args.clear:
-        clear_entries(wheel)
-        upload = True
-
-    if upload:
-        logging.info("Uploading Wheel")
-        logging.info(WheelOfNames.send_private_wheel(args.key[0], {'config': wheel}))
-    logging.info("---Closing---")
-
-
-def run_shared(args):
-    # Validate Color before doing anything
-    if args.color:
-        if (new_color := WheelColors.validate_color(args.color[1])) is None:
-            logging.info("Invalid Color String")
-            logging.info('---Exiting---')
-            return
-        else:
-            # Set color argument to the validated color hex
-            args.color[1] = new_color
-
-    logging.info("Downloading Wheel")
-    wheel_data = WheelOfNames.get_shared_wheels(args.key[0])
 
     if 'error' in wheel_data.keys():
         logging.error('Invalid API key')
@@ -195,7 +157,10 @@ def run_shared(args):
 
     if upload:
         logging.info("Uploading Wheel")
-        logging.info(WheelOfNames.send_shared_wheel(args.key[0], args.wheel[0], {'wheelConfig': wheel}))
+        if args.shared:
+            logging.info(WheelOfNames.send_shared_wheel(args.key[0], args.wheel[0], {'wheelConfig': wheel}))
+        elif args.private:
+            logging.info(WheelOfNames.send_private_wheel(args.key[0], {'config': wheel}))
     logging.info("---Closing---")
 
 

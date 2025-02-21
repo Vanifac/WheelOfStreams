@@ -6,22 +6,22 @@ Wheel of Streams is a program created to assist with automating www.wheelofnames
 How to setup
 1. 
 2. 
+3. USESHELLEXECUTE: False
+4. Settings > General > Process Watcher Start/Auto Start
 
 ## Arguments
-`-key KEY -wheel NAMEOFWHEEL (-add NAME | -color NAME COLOR | -clear)`
+`-key KEY -wheel NAMEOFWHEEL (-shared | -private) (-add NAME | -color NAME COLOR | -clear)`
 
 The following arguments MUST used with the Wheel of Streams:
 ### -key API_KEY
-Your WheelOfNames API Key.
+Your WheelOfNames API Key. This can be found at ##
 
 ### -wheel NAME
-The name of the wheel you wish to edit.
+The name or path of the wheel you wish to edit.
 
 
-### Wheel Type Arguments
-One of the following arguments must be included:
-#### -shared 
-#### -private 
+### -shared / -private
+Indicate whether the wheel is shared or private.
 
 
 ### Option Arguments
@@ -59,10 +59,10 @@ Specify the color of the wheel. Acceptable values are either a color hex (eg. #a
 
 Make sure to check the `WheelColors.py` file for the most up-to-date list of colors.
 ### Examples
-`-key put-apikey-here -wheel Wheel -add Vanifac`
+`-key API_KEY -shared -wheel xxx-xxx -add Vanifac`
 
-`-key put-apikey-here -wheel wheeloffortune -color lemonguy yellow`
+`-key API_KEY -private -wheel wheeloffortune -color lemonguy yellow`
 
-`-key put-apikey-here -wheel RiggedRaffleWheel -color brian #1f6a78`
+`-key API_KEY -private -wheel RiggedRaffleWheel -color brian #1f6a78`
 
-`-key put-apikey-here -wheel Wheel2 -clear`
+`-key API_KEY -shared -wheel xxx-xxx -clear`
